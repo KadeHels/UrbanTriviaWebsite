@@ -21,7 +21,6 @@ namespace WebApplication2.Controllers
                 .Take(25)
                 .ToList();
 
-
             return View(words);
         }
 
