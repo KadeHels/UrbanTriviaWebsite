@@ -10,7 +10,8 @@ namespace WebApplication2.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-
+    using System.Web.Http;
+    using WebApiContrib.IoC.Ninject;
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -46,6 +47,10 @@ namespace WebApplication2.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
+
+                GlobalConfiguration.Configuration.DependencyResolver =
+                    new NinjectResolver(kernel);
+
                 return kernel;
             }
             catch
@@ -64,6 +69,7 @@ namespace WebApplication2.App_Start
             //Creates only one version 
             kernel.Bind<Data.WordContext>().To<Data.WordContext>().InRequestScope();
             kernel.Bind<Data.IWordRepository>().To<Data.WordRepository>().InRequestScope();
+
         }        
     }
 }

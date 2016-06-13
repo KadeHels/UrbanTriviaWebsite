@@ -1,33 +1,16 @@
 ﻿<!DOCTYPE html>
-<html>
+<html >
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>urban trivia.</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script>
-        var app = angular.module('myApp', []);
-        app.run(function ($rootScope) {
-
-            $rootScope.appName = "urban trivia.";
-            $rootScope.aboutTitle = "About us"
-            $rootScope.aboutMessage = "Created by Kade Helseth";
-            $rootScope.footerMessage = "For educational purposes only";
-            $rootScope.mainTitle1 = "Register";
-            $rootScope.mainMessage1 = "Registration helps us keep up with the highest scores! You can play the game anonymously of course, but if you do your an Alaskan Firedragon!";
-            $rootScope.mainTitle2 = "Signning In";
-            $rootScope.mainMessage2 = "Signning in is the worst part about any website. Don't be a CUNT";
-            $rootScope.mainTitle3 = "Play!";
-            $rootScope.mainMessage3 = "Play to win high stakes trivial combat!";
-        });
-    </script>
 
 </head>
 
-<body ng-app="myApp">
+<body >
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">

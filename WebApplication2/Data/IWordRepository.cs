@@ -9,5 +9,9 @@ namespace WebApplication2.Data
     {
         IQueryable<Word> GetWords();
         IQueryable<Word> GetWordsById(int Id);
+
+        bool Save();
+
+        bool AddWord(Word newWord);
     }
 }

@@ -12,6 +12,21 @@ namespace WebApplication2.Data
         {
             this._ctx = ctx;
         }
+
+        public bool AddWord(Word newWord)
+        {
+            try
+            {
+                _ctx.Words.Add(newWord);
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+
         public IQueryable<Word> GetWords()
         {
             return _ctx.Words;
@@ -20,6 +35,19 @@ namespace WebApplication2.Data
         public IQueryable<Word> GetWordsById(int Id)
         {
             throw new NotImplementedException();
+        }
+
+        public bool Save()
+        {
+            try
+            {
+                return _ctx.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                //Todo watch error
+                return false;
+            }
         }
     }
 }
