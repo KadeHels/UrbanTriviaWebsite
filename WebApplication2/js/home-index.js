@@ -10,9 +10,22 @@ module.config(function ($routeProvider){
         controller: "wordListController",
         templateUrl: "Templates/wordListView.html"
     });
+    $routeProvider.when("/addWord", {
+        controller: "addWordController",
+        templateUrl: "Templates/addWordView.html"
+    });
 
     $routeProvider.otherwise({ redirectTO: "/" });
 });
+
+module.controller("addWordController", function ($scope, $http, $window) {
+    $scope.data = [];
+    $scope.isBusy = true;
+
+
+})
+
+
 module.controller("wordListController", function ($scope, $http) {
     $scope.data = [];
     $scope.isBusy = true;
