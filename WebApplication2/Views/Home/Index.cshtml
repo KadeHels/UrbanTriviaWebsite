@@ -1,29 +1,23 @@
 ﻿@model IEnumerable<WebApplication2.Data.Word>
-
-<script src="~/js/home-index.js"></script>
-<div ng-app="myapp" ng-controller="homeIndexController">
+    @{ 
+        ViewBag.InitModule = "homeIndex";
+    }
+@section Scripts{
+    <script src="~/js/home-index.js"></script> 
+    <script src="~/Scripts/angular-route.js"></script>
+    }
 
     <div class="jumbotron">
-        <p class="lead"><strong> {{appName}} </strong>Trivia with an Urban Twist</p>
-        <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+        <p class="lead"><h2><strong> urban trivia. </strong></h2>Trivia with an Urban Twist</p>
+        <p><a href="#/wordList" class="btn btn-primary btn-lg">See All the Words &raquo;</a></p>
+    </div>
+
+    <div class="progress progress-striped active" ng-show="isBusy">
+        <div class="progress-bar" style="width: 100%"></div>
     </div>
     @if (!Request.IsAuthenticated)
     {
-        <h1>urban trivia. </h1>
-        <table>
-            <tbody>
-                <tr><td> Name </td> <td> Definition</td> </tr>
-                    <tr ng-repeat="words in data">
-                        <td>
-                            {{words.Name}}
-                        </td>
-                        <td>
-                           {{words.Definition}}
-                        </td>
-                    </tr>
-            </tbody>
-        </table>
-        
+        <div ng-view=""></div>
     }
     else
     {
@@ -43,4 +37,3 @@
             <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
         </div>
     }
-    </div>

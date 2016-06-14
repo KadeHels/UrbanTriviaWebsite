@@ -1,0 +1,15 @@
+﻿<h1>All the words!</h1>
+<table class="table-striped">
+    <tbody>
+        <tr><td> Name </td> <td> Definition</td><td>Url</td> </tr>
+        <tr ng-repeat="words in data" class="active">
+            <td>
+                {{words.Name}}
+            </td>
+            <td>
+                {{words.Definition}}
+            </td>
+            <td>{{words.Url}}</td>
+        </tr>
+    </tbody>
+</table>
