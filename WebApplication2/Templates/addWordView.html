@@ -1,9 +1,43 @@
 ﻿<h1>Add a new word!</h1>
-<form name="newWordForm" novalidate ng-submit="save()">
+<form name="newWordForm" novalidate ng-submit="save()" >
     <fieldset>
-        <div>
-            <label for="word">Word: </label>
-            <input type="text" name="word" ng-model="newWord.word" />
-        </div>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="word">Word: </label>
+                    </td>
+                    <td>
+                        <input type="text" name="word" ng-model="newWord.Name"  required />
+                        <span class="error" ng-show="newWordForm.word.$error.required">*</span>
+                        <span class="error"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="definition">Definition: </label>
+                    </td>
+                    <td>
+                        <input type="text" name="definition" ng-model="newWord.Definition" required />
+                        <span class="error" ng-show="newWordForm.definition.$error.required">*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="url">Url: </label>
+                    </td>
+                    <td>
+                        <input type="text" name="url" ng-model="newWord.Url" ng-trim required/>
+                        <span class="error" ng-show="newWordForm.url.$error.required">*</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+      <br/>
+        <span>
+            <input type="submit" class="btn-xs" value="Save" ng-disabled="newWordForm.$invalid"/>
+            <button class="btn-xs"><a href="/#/" style="text-decoration: none;">Cancel</a></button>
+        </span>
+        
     </fieldset>
 </form>

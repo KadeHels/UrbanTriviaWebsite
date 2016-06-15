@@ -9,11 +9,14 @@
 
     <div class="jumbotron">
         <p class="lead"><h2><strong> urban trivia. </strong></h2>Trivia with an Urban Twist</p>
-        <p><a href="#/wordList" class="btn btn-primary btn-sm">See All the Words &raquo;</a></p>
-        <p><a href="#/addWord" class="btn btn-primary btn-sm">Add new Words &raquo;</a></p>
+        <span>
+            <a href="/#" class="btn btn-primary btn-sm">Play the game &raquo;</a>
+            <a href="#/wordList" class="btn btn-primary btn-sm">See All the Words &raquo;</a>
+            <a href="#/addWord" class="btn btn-primary btn-sm">Add new Words &raquo;</a>
+        </span>
     </div>
 
-    <div class="progress progress-striped active" ng-show="isBusy">
+    <div class="progress progress-striped active" data-ng-show="isBusy">
         <div class="progress-bar" style="width: 100%"></div>
     </div>
     @if (!Request.IsAuthenticated)
