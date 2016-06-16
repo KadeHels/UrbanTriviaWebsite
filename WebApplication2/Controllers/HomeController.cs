@@ -17,9 +17,7 @@ namespace WebApplication2.Controllers
         }
         public ActionResult Index()
         {
-            var words = _repo.GetWords()
-                .Take(25)
-                .ToList();
+            var words = _repo.GetWords().ToList();
 
             return View(words);
         }
