@@ -1,7 +1,7 @@
 ﻿//home-index.js
 var module = angular.module("homeIndex", ['ngRoute']);
 
-module.config(function ($routeProvider){
+module.config(["$routeProvider", function ($routeProvider){
     $routeProvider.when("/", {
         controller: "wordsController",
         templateUrl: "/Templates/wordsView.html"
@@ -16,9 +16,9 @@ module.config(function ($routeProvider){
     });
 
     $routeProvider.otherwise({ redirectTO: "/" });
-});
+}]);
 
-module.factory("dataService", function ($http, $q) {
+module.factory("dataService", ["$http", "$q", function ($http, $q) {
     var _words = [];
     var _isInit = false;
 
@@ -69,9 +69,9 @@ module.factory("dataService", function ($http, $q) {
         addWord: _addWord,
         isReady: _isReady
     };
-})
+}]);
 
-module.controller("addWordController", function ($scope, $http, $window,  dataService) {
+module.controller("addWordController", ["$scope", "$http", "$window", "dataService",function ($scope, $http, $window, dataService) {
     $scope.isBusy = false;
     $scope.newWord = {};
 
@@ -92,9 +92,9 @@ module.controller("addWordController", function ($scope, $http, $window,  dataSe
 
     
 
-});
+}]);
 
-module.controller("wordListController", function ($scope, $http, dataService) {
+module.controller("wordListController", ["$scope", "$http", "dataService", function ($scope, $http, dataService) {
     $scope.isBusy = false;
     $scope.data = dataService;
     
@@ -113,9 +113,9 @@ module.controller("wordListController", function ($scope, $http, dataService) {
             $scope.isBusy = false;
         });
     }
-});
+}]);
 
-module.controller("wordsController", function ($scope, $http, dataService) {
+module.controller("wordsController", ["$scope", "$http", "dataService", function ($scope, $http, dataService) {
     $scope.isBusy = false;
     $scope.data = dataService;
 
@@ -134,4 +134,26 @@ module.controller("wordsController", function ($scope, $http, dataService) {
             $scope.isBusy = false;
         });
     }
-});
+}]);
+
+var wordController = ["$scope", "$http", "dataService",
+    function ($scope, $http, dataService) {
+    $scope.isBusy = false;
+    $scope.data = dataService;
+
+    if (dataService.isReady() == false) {
+        $scope.isBusy = true;
+
+        dataService.getWords()
+        .then(function (result) {
+            // success      
+        },
+        function () {
+            // error
+            alert("Could not load words");
+        })
+        .then(function () {
+            $scope.isBusy = false;
+        });
+    }
+}];

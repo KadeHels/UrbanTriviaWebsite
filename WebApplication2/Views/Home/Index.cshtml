@@ -13,12 +13,10 @@
             <a href="/#" class="btn btn-primary btn-sm">Play the game &raquo;</a>
             <a href="#/wordList" class="btn btn-primary btn-sm">See All the Words &raquo;</a>
             <a href="#/addWord" class="btn btn-primary btn-sm">Add new Words &raquo;</a>
-        </span>
+        </span> 
     </div>
 
-    <div class="progress progress-striped active" data-ng-show="isBusy">
-        <div class="progress-bar" style="width: 100%"></div>
-    </div>
+    
     @if (!Request.IsAuthenticated)
     {
         <div ng-view=""></div>

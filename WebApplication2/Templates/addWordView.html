@@ -1,4 +1,7 @@
-﻿<h1>Add a new word!</h1>
+﻿<div class="progress progress-striped active" ng-show="isBusy">
+    <div class="progress-bar" style="width: 100%"></div>
+</div>
+<h1>Add a new word!</h1>
 <form name="newWordForm" novalidate ng-submit="save()" >
     <fieldset>
         <table class="table">
